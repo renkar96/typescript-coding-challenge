@@ -1,0 +1,38 @@
+<router-outlet></router-outlet>
+
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Categorias
+        </button>
+        <ul class="dropdown-menu">
+          <li *ngFor="let categoria of categoria.results;let index = index;let isFirst = first"[ngClass]="{active:isFirst}">
+            <a class="dropdown-item" [href]="categoria.categories">{{categoria.categories}}</a>
+        </li>
+        </ul>
+      </div>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="Buscador" placeholder="Buscador" aria-label="Search">
+        <button class="btn btn-primary" type="submit">Buscador</button>
+      </form>
+    </div>
+  </nav>
+  <ng-container class="container">
+  <div id="carouselModels" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item " *ngFor="let modelo of modelos.results;let index = index;let isFirst = first"[ngClass]="{active:isFirst}">
+        <iframe class="d-block  cont" [src]="modelo.embedUrl | url"></iframe>
+        <h3 class="text">{{modelo.name}}</h3>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselModels" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only"></span>
+    </a>
+    <a class="carousel-control-next" href="#carouselModels" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only"></span>
+    </a>
+  </div>
+</ng-container>
